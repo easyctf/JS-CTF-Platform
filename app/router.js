@@ -3,6 +3,9 @@ var pages = [
 	"login",
 	"logout",
 	"register",
+	"about",
+	"updates",
+	"scoreboard"
 ];
 
 var auth_pages = [
