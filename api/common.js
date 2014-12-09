@@ -55,7 +55,7 @@ exports.db.open(function(err, database) {
 // ***********
 
 exports.validatePassword = function(plain, hashed) {
-	var salt = hashed.substr(0, HASH_LENGTH);
+	var salt = hashed.substr(0, exports.HASH_LENGTH);
 	var valid = salt + exports.hash(plain + salt, "sha256");
 	return hashed === valid;
 };
@@ -63,7 +63,7 @@ exports.validatePassword = function(plain, hashed) {
 exports.generateSalt = function() {
 	var set = "0123456789abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ";
 	var salt = "";
-	for(var i=0; i<HASH_LENGTH; i++) {
+	for(var i=0; i<exports.HASH_LENGTH; i++) {
 		var p = Math.floor(Math.random() * set.length);
 		salt += set[p];
 	}

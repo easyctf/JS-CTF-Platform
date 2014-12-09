@@ -1,10 +1,11 @@
 var common = require("./common");
+var moment = require("moment");
 
 exports.register = function(req, res) {
 	var email = req.param("email");
-	var teamname = req.param("teamname");
+	var teamname = req.param("team");
 	var school = req.param("school");
-	var pwd = req.param("group");
+	var pwd = req.param("pass");
 
 	if (!(email && email.length > 0 && teamname && teamname.length > 0 && school && school.length > 0 && pwd && pwd.length > 0)) {
 		res.send({
@@ -83,7 +84,7 @@ exports.register = function(req, res) {
 				email: email.toString(),
 				teamname: teamname.toString(),
 				school: school.toString(),
-				pass: common.encrypt(pwd.toString()),
+				pass: common.encryptPass(pwd.toString()),
 				group: 1,
 				registerDate: moment().format()
 			}, { w: 1 }, function(err, inserted) {
