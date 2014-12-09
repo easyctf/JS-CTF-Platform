@@ -1,6 +1,7 @@
 var pages = [
 	"index",
 	"login",
+	"logout",
 	"register",
 ];
 

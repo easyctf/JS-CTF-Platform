@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-		<title>Login - CTF Platform</title>
+		<title>Register - CTF Platform</title>
 
 		<link rel="stylesheet" href="css/main.css" media="screen" />
 		<link rel="icon" href="images/logo.ico" media="screen" />
@@ -30,37 +30,49 @@
 		<div class="container">
 			<div>
 				<div class="page-header">
-					<h1>Login</h1>
+					<h1>Register for CTF-Platform</h1>
 				</div>
+
 				<div class="row">
-					<div id="login_msg"></div>
+					<div id="register_msg"></div>
 				</div>
 
 				<div class="container-fluid">
 					<div class="col-lg-8">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h2 class="panel-title">Login to CTF Platform</h2>
+								<h2 class="panel-title">Create a Team</h2>
 							</div>
 							<div class="panel-body">
 								<form class="form-horizontal" action="" onsubmit="return false;">
 									<div class="form-group">
-										<label for="log-team" class="col-lg-3 control-label">Team Name</label>
+										<label for="reg-email" class="col-lg-3 control-label">Email</label>
 										<div class="col-lg-8">
-											<input type="text" class="form-control" id="log-team" placeholder="Team Name">
+											<input type="email" class="form-control" id="reg-email" placeholder="Email" autocomplete="off">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="log-pass" class="col-lg-3 control-label">Password</label>
+										<label for="reg-team" class="col-lg-3 control-label">Team Name</label>
 										<div class="col-lg-8">
-											<input type="password" class="form-control" id="log-pass" placeholder="Password">
+											<input type="text" class="form-control" id="reg-team" placeholder="Team Name" autocomplete="off">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="log-password" class="col-lg-3 control-label"></label>
+										<label for="reg-school" class="col-lg-3 control-label">School</label>
+										<div class="col-lg-8">
+											<input type="text" class="form-control" id="reg-school" placeholder="School" autocomplete="off">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="reg-pass" class="col-lg-3 control-label">Password</label>
+										<div class="col-lg-8">
+											<input type="password" class="form-control" id="reg-pass" placeholder="Password" autocomplete="off">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="reg-submit" class="col-lg-3 control-label"></label>
 										<div class="col-lg-7">
-											<button class="btn btn-primary" id="login-button" onClick="handle_login(); return false;">Login</button>
-											<a class="btn btn-default" id="forgot-button" href="/forgot">Forgot Password</a>
+											<button class="btn btn-primary" id="register-button" onClick="return false;">Register!</button>
 										</div>
 									</div>
 								</form>
@@ -76,7 +88,7 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/dependencies.js"></script>
-		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="js/register.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				display_navbar();

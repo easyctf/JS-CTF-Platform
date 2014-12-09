@@ -18,6 +18,9 @@ module.exports = function(app) {
 	app.post("/api/auth/login", function(req, res) {
 		auth.login(req, res);
 	});
+	app.get("/api/auth/logout", function(req, res) {
+		auth.logout(req, res);
+	});
 
 	// ***********
 	//   ACCOUNT

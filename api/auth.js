@@ -73,6 +73,24 @@ exports.login = function(req, res) {
 	}
 };
 
+exports.logout = function(req, res) {
+	if (req.session.tid) {
+		req.session.destroy();
+		req.session = null;
+		res.send({
+			success: 1,
+			message: "Successfully logged out!"
+		});
+		return;
+	} else {
+		res.send({
+			success: 0,
+			message: "You're not logged in."
+		});
+		return;
+	}
+};
+
 var authenticate = function(teamname, password, isHash, callback) {
 	if (teamname == undefined || teamname == "") {
 		callback({

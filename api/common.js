@@ -6,6 +6,9 @@ var MongoDB = require("mongodb").Db;
 var Server = require("mongodb").Server;
 var crypto = require("crypto");
 var moment = require("moment");
+var entities_ = require("html-entities").XmlEntities;
+
+var entities = new entities_();
 
 // *************
 //   VARIABLES
@@ -13,6 +16,7 @@ var moment = require("moment");
 
 exports.TEAMNAME_MAX_CHARS = 75;
 exports.HASH_LENGTH = 18;
+exports.ASCII = /^[\x20-\x7E]+$/;
 
 // *********
 //   DATES
@@ -74,3 +78,7 @@ exports.encryptPass = function(pass) {
 	var salt = exports.generateSalt();
 	return salt + exports.hash(pass + salt, "sha256");
 }
+
+exports._ = function(str) {
+	return entities.encode(str).trim();
+};
