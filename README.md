@@ -4,7 +4,7 @@ This is a genericized version of EasyCTF 2014, and can be used as a backend for 
 
 ## Getting Started
 
-1. Clone the repo and run `npm install` dependencies.
+1. Clone the repo and run `npm install` to install dependencies.
 2. Modify the options in `api/common.js`.
 3. Navigate to the directory using some kind of shell and run `node app` to start the server.
 4. The server will listen on port 3000 by default unless you specify a different port in the environmental variables.
@@ -38,4 +38,5 @@ It is strongly recommended that you use Heroku. Heroku is simple to set up, runs
 $ (git add, git commit)
 $ heroku create
 $ git push heroku master
+$ heroku ps:scale web=1 # Ensure at least one web process is running
 ```
