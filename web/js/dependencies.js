@@ -1,5 +1,5 @@
-var startDate = new Date("Sat Nov 29 2014 11:00:00 GMT-0600 (Central Standard Time)");
-var endDate = new Date("Sat Dec 06 2014 22:00:00 GMT-0600 (Central Standard Time)");
+var startDate = Date.parse('14 Feb 2015 09:00:00 GMT-0500');
+var endDate = Date.parse('21 Feb 2015 21:00:00 GMT-0500');
 
 var tabsLI = [
 	[ "problems", "Problems" ],
@@ -70,7 +70,7 @@ function display_navbar () {
 	var now = new Date();
 	var during = startDate < now && endDate > now;
 	$.ajax({
-		url: "/api/isauthorized",
+		url: "/api/auth/authorized",
 		method: "GET",
 		dataType: "json"
 	}).done(function(data) {
@@ -89,14 +89,14 @@ function display_navbar () {
 			}
 			$.ajax({
 				type: "GET",
-				url: "/api/isloggedin",
+				url: "/api/auth/loggedin",
 				cache: false,
-			}).done(function(data) {
-				if (data['success'] == 1 && sessionStorage.signInStatus != "loggedIn") {
+			}).done(function(data2) {
+				if (data2['success'] == 1 && sessionStorage.signInStatus != "loggedIn") {
 					sessionStorage.signInStatus = "loggedIn";
 					build_navbar(full_navbar ? 0 : 3);
 					check_certs_link_necessary();
-				} else if (data['success'] == 0 && sessionStorage.signInStatus != "notLoggedIn") {
+				} else if (data2['success'] == 0 && sessionStorage.signInStatus != "notLoggedIn") {
 					sessionStorage.signInStatus = "notLoggedIn";
 					build_navbar(1);
 				}
@@ -111,10 +111,10 @@ function display_navbar () {
 		} else {
 			$.ajax({
 				type: "GET",
-				url: "/api/isloggedin",
+				url: "/api/auth/loggedin",
 				cache: false,
-			}).done(function(data) {
-				build_navbar(data['success'] == 1 ? (full_navbar ? 0 : 3) : 1);
+			}).done(function(data2) {
+				build_navbar(data2['success'] == 1 ? (full_navbar ? 0 : 3) : 1);
 			}).fail(function() {
 				build_navbar(1);
 				show_site_down_error();

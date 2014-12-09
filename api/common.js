@@ -4,6 +4,22 @@
 
 var MongoDB = require("mongodb").Db;
 var Server = require("mongodb").Server;
+var crypto = require("crypto");
+var moment = require("moment");
+
+// *************
+//   VARIABLES
+// *************
+
+exports.TEAMNAME_MAX_CHARS = 75;
+exports.HASH_LENGTH = 18;
+
+// *********
+//   DATES
+// *********
+
+exports.startDate = moment("2015-02-14 09:00:00.000-05:00");
+exports.endDate = moment("2015-02-21 21:00:00.000-05:00");
 
 // ************
 //   DATABASE
@@ -29,3 +45,32 @@ exports.db.open(function(err, database) {
 		});
 	}
 });
+
+// ***********
+//   ACCOUNT
+// ***********
+
+exports.validatePassword = function(plain, hashed) {
+	var salt = hashed.substr(0, HASH_LENGTH);
+	var valid = salt + exports.hash(plain + salt, "sha256");
+	return hashed === valid;
+};
+
+exports.generateSalt = function() {
+	var set = "0123456789abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ";
+	var salt = "";
+	for(var i=0; i<HASH_LENGTH; i++) {
+		var p = Math.floor(Math.random() * set.length);
+		salt += set[p];
+	}
+	return salt;
+};
+
+exports.hash = function(str, algo) {
+	return crypto.createHash(algo).update(str).digest("hex");
+}
+
+exports.encryptPass = function(pass) {
+	var salt = exports.generateSalt();
+	return salt + exports.hash(pass + salt, "sha256");
+}
