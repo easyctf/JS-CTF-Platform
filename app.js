@@ -6,6 +6,8 @@
 
 var express = require("express");
 var http = require("http");
+var api = require("./api/api");
+var router = require("./app/router");
 
 var app = express();
 
@@ -20,6 +22,9 @@ app.configure(function() {
 
 	app.use(express.static(__dirname + "/web"));
 });
+
+api(app);
+router(app);
 
 http.createServer(app).listen(app.get("port"), function() {
 	console.log("[app.js] listening on port " + app.get("port") + "...");
