@@ -60,7 +60,7 @@ exports.is_authorized = function(req, res) {
 
 exports.login = function(req, res) {
 	if (req.param("teamname") && req.param("password")) {
-		authenticate(req.teamname, req.password, false, function(result) {
+		authenticate(req.param("teamname"), req.param("password"), false, function(result) {
 			res.send(result);
 			return;
 		})
