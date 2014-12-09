@@ -1,5 +1,7 @@
 var pages = [
-	"index"
+	"index",
+	"login",
+	"register",
 ];
 
 var auth_pages = [

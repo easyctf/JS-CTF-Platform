@@ -58,6 +58,21 @@ exports.is_authorized = function(req, res) {
 	}
 };
 
+exports.login = function(req, res) {
+	if (req.teamname && req.password) {
+		authenticate(req.teamname, req.password, false, function(result) {
+			res.send(result);
+			return;
+		});
+	} else {
+		res.send({
+			success: 0,
+			message: "Please fill out all fields."
+		});
+		return;
+	}
+};
+
 var authenticate = function(teamname, password, isHash, callback) {
 	if (teamname == undefined || teamname == "") {
 		callback({
