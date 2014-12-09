@@ -4,7 +4,7 @@ This is a genericized version of EasyCTF 2014, and can be used as a backend for 
 
 ## Getting Started
 
-1. Clone the repo.
+1. Clone the repo and run `npm install` to install dependencies.
 2. Modify the options in `api/common.js`.
 3. Navigate to the directory using some kind of shell and run `node app` to start the server.
 4. The server will listen on port 3000 by default unless you specify a different port in the environmental variables.
@@ -31,10 +31,12 @@ This platform requires a MongoDB server. MongoDB has many advantages to SQL, and
 
 Sample problem information can be found in the `docs` folder in this repo (TODO).
 
-## Host
+## Hosting
+It is strongly recommended that you use Heroku. Heroku is simple to set up, runs on Git, and has many partners that will give you exclusive deals on their products (such as email servers, DNS servers, etc.). This platform is ready to push to Heroku directly.
 
-It is strongly recommended that you use Heroku. Heroku is simple to set up, runs on Git, and has many partners that will give you exclusive deals on their products (such as email servers, DNS servers, etc.). To upload this to Heroku, add a `Procfile` that simply contains the following text:
-
-  web: node app
-  
-and proceed to push the whole repository to Heroku as directed by the website.
+```sh
+$ (git add, git commit)
+$ heroku create
+$ git push heroku master
+$ heroku ps:scale web=1 # Ensure at least one web process is running
+```
