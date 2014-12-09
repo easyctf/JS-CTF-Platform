@@ -10,7 +10,7 @@ exports.is_logged_in = function(req, res) {
 		return;
 	} else {
 		if (req.cookies.teamname && req.cookies.password) {
-			authenticate(req.cookies.teamname, req.cookies.password, function(result) {
+			authenticate(req.cookies.teamname, req.cookies.password, true, function(result) {
 				res.send(result);
 				return;
 			});
@@ -28,7 +28,7 @@ exports.is_authorized = function(req, res) {
 	if (req.session.tid) {
 	} else {
 		if (req.cookies.teamname && req.cookies.password) {
-			authenticate(req.cookies.teamname, req.cookies.password, function(result) {
+			authenticate(req.cookies.teamname, req.cookies.password, true, function(result) {
 				if (result.success == 1) {
 				} else {
 					res.send(result);
@@ -58,7 +58,7 @@ exports.is_authorized = function(req, res) {
 	}
 };
 
-var authenticate = function(teamname, password, callback) {
+var authenticate = function(teamname, password, isHash, callback) {
 	if (teamname == undefined || teamname == "") {
 		callback({
 			success: 0,
@@ -111,9 +111,11 @@ var authenticate = function(teamname, password, callback) {
 			var team = array[0];
 			var pwHash = team.pass;
 
-			if (common.validatePassword(password, pwHash)) {
+			if (isHash ? password == pwHash : common.validatePassword(password, pwHash)) {
 				req.session.group = team.group || 1;
 				req.session.tID = team._id.valueOf();
+				res.cookie("teamname", teamname);
+				res.cookie("password", pwHash);
 				callback({
 					success: 1,
 					message: "Logged in."
