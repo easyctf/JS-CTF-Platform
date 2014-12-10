@@ -26,10 +26,12 @@ exports.is_logged_in = function(req, res) {
 
 exports.is_authorized = function(req, res) {
 	if (req.session.tid) {
+		checkAuth(req, res);
 	} else {
 		if (req.cookies.teamname && req.cookies.password) {
 			authenticate(req, res, req.cookies.teamname, req.cookies.password, true, function(result) {
 				if (result.success == 1) {
+					checkAuth(req, res);
 				} else {
 					res.send(result);
 					return;
@@ -42,19 +44,6 @@ exports.is_authorized = function(req, res) {
 			});
 			return;
 		}
-	}
-	if ((moment().isAfter(common.startDate) && moment().isBefore(common.endDate)) || (req.session.group && req.session.group == 3)) {
-		res.send({
-			success: 1,
-			message: "You are authorized."
-		});
-		return;
-	} else {
-		res.send({
-			success: 0,
-			message: "You are not authorized."
-		});
-		return;
 	}
 };
 
@@ -93,7 +82,25 @@ exports.logout = function(req, res) {
 	}
 };
 
+var checkAuth = function(req, res) {
+	if ((moment().isAfter(common.startDate) && moment().isBefore(common.endDate)) || (req.session.group && req.session.group == 3)) {
+		res.send({
+			success: 1,
+			message: "You are authorized."
+		});
+		return;
+	} else {
+		res.send({
+			success: 0,
+			message: "You are not authorized."
+		});
+		return;
+	}
+};
+
 var authenticate = function(req, res, teamname, password, isHash, callback) {
+	res.cookie("teamname", "");
+	res.cookie("password", "");
 	if (teamname == undefined || teamname == "") {
 		callback({
 			success: 0,

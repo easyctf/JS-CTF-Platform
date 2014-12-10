@@ -79,7 +79,6 @@ function display_navbar () {
 		if (typeof(Storage) != "undefined") {
 			if (sessionStorage.signInStatus == "loggedIn") {
 				build_navbar(full_navbar ? 0 : 3);
-				check_certs_link_necessary();
 			} else if (sessionStorage.signInStatus == "notLoggedIn") {
 				build_navbar(1);
 			} else if (sessionStorage.signInStatus == "apiFail") {
@@ -95,7 +94,6 @@ function display_navbar () {
 				if (data2['success'] == 1 && sessionStorage.signInStatus != "loggedIn") {
 					sessionStorage.signInStatus = "loggedIn";
 					build_navbar(full_navbar ? 0 : 3);
-					check_certs_link_necessary();
 				} else if (data2['success'] == 0 && sessionStorage.signInStatus != "notLoggedIn") {
 					sessionStorage.signInStatus = "notLoggedIn";
 					build_navbar(1);
@@ -117,7 +115,6 @@ function display_navbar () {
 				build_navbar(data2['success'] == 1 ? (full_navbar ? 0 : 3) : 1);
 			}).fail(function() {
 				build_navbar(1);
-				show_site_down_error();
 			});
 		}
 	});

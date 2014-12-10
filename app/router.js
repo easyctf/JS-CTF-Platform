@@ -19,6 +19,7 @@ module.exports = function(app) {
 	for(var i=0; i<pages.length; i++) {
 		(function(i) {
 			app.get("/" + pages[i], function(req, res) {
+				console.log("[app/router.js] GET "+req.url);
 				if (auth_pages.indexOf(pages[i]) > -1) {
 					// TODO Redirect to login page.
 					return;
