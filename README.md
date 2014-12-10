@@ -29,7 +29,7 @@ This platform requires a MongoDB server. MongoDB has many advantages to SQL, and
 - shell_accounts (for if you want to have a shell)
 - submissions (store submission information)
 
-Sample problem information can be found in the `docs` folder in this repo (TODO).
+Sample problem information can be found in the [`docs`](https://github.com/easyctf/ctf-platform/wiki) folder in this repo (TODO).
 
 ## Hosting
 It is strongly recommended that you use Heroku. Heroku is simple to set up, runs on Git, and has many partners that will give you exclusive deals on their products (such as email servers, DNS servers, etc.). This platform is ready to push to Heroku directly.
