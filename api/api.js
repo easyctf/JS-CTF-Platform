@@ -1,5 +1,6 @@
 var account = require("./account");
 var auth = require("./auth");
+var scoreboard = require("./scoreboard");
 
 module.exports = function(app) {
 	app.get("/api", function(req, res) {
@@ -27,5 +28,12 @@ module.exports = function(app) {
 	// ***********
 	app.post("/api/account/register", function(req, res) {
 		account.register(req, res);
+	});
+
+	// **************
+	//   SCOREBOARD
+	// **************
+	app.get("/api/scoreboard", function(req, res) {
+		scoreboard.get_scoreboard(req, res);
 	});
 };
