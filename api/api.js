@@ -36,4 +36,7 @@ module.exports = function(app) {
 	app.get("/api/scoreboard", function(req, res) {
 		scoreboard.get_scoreboard(req, res);
 	});
+	app.get("/api/scoreboard/graph", function(req, res) {
+		scoreboard.get_graph(req, res);
+	});
 };
