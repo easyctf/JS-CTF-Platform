@@ -50,6 +50,10 @@ exports.is_authorized = function(req, res) {
 exports.login = function(req, res) {
 	if (req.param("teamname") && req.param("password")) {
 		authenticate(req, res, req.param("teamname"), req.param("password"), false, function(result) {
+			if (!req.cookies.teamname)
+				res.cookie("teamname", teamname);
+			if (!req.cookies.password)
+				res.cookie("password", common.encryptPass(password));
 			res.send(result);
 			return;
 		})
@@ -98,9 +102,13 @@ var checkAuth = function(req, res) {
 	}
 };
 
+exports.authenticate = function(req, res, teamname, password, isHash, callback) {
+	authenticate(req, res, teamname, password, isHash, callback);
+};
+
 var authenticate = function(req, res, teamname, password, isHash, callback) {
-	res.cookie("teamname", "");
-	res.cookie("password", "");
+	// res.cookie("teamname", "");
+	// res.cookie("password", "");
 	if (teamname == undefined || teamname == "") {
 		callback({
 			success: 0,
@@ -156,10 +164,6 @@ var authenticate = function(req, res, teamname, password, isHash, callback) {
 			if (isHash ? password == pwHash : common.validatePassword(password, pwHash)) {
 				req.session.group = team.group || 1;
 				req.session.tID = team._id.valueOf();
-				if (!req.cookies.teamname)
-					res.cookie("teamname", teamname);
-				if (!req.cookies.password)
-					res.cookie("password", pwHash);
 				callback({
 					success: 1,
 					message: "Logged in."
