@@ -47,4 +47,7 @@ module.exports = function(app) {
 	app.post("/api/forgot", function(req, res) {
 		forgot.send_reset_email(req, res);
 	});
+	app.post("/api/forgot/reset", function(req, res) {
+		forgot.verify_code(req, res);
+	});
 };

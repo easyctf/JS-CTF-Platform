@@ -1,0 +1,54 @@
+doctype html(lang='en')
+html
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=yes')
+		title Reset Password - CTF Platform
+		link(rel='stylesheet', href='/css/main.css', media='screen')
+		link(rel='icon', href='images/logo.ico', media='screen')
+	body
+		nav.navbar.navbar-default(role='navigation')
+			.container-fluid
+				.navbar-header
+					button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-content')
+						span.sr-only Toggle Navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='/') CTF-Platform
+				#navbar-content.collapse.navbar-collapse
+					ul#nav-left.nav.navbar-nav
+					ul#nav-right.nav.navbar-nav.navbar-right
+		.container
+			.page-header
+				h1 Reset your Password
+			.container
+				#verify_msg
+				.well.col-lg-7
+					div
+						form(class='form-horizontal', action='javascript:dispatch();')
+							fieldset
+								legend Change Password
+								div(class='form-group')
+									label(for='verify-code' class='col-lg-3 control-label') Code
+									div(class='col-lg-8')
+										input(type='text', class='form-control', name='-verify-code', id='-verify-code', placeholder='Code', value='#{code}', disabled)
+								div(class='form-group')
+									label(for='verify-password1' class='col-lg-3 control-label') Password
+									div(class='col-lg-8')
+										input(type='password', class='form-control', name='verify-password1', id='verify-password1', placeholder='Password', autofocus='on')
+								div(class='form-group')
+									label(for='verify-password2' class='col-lg-3 control-label') Confirm Password
+									div(class='col-lg-8')
+										input(type='password', class='form-control', name='verify-password2', id='verify-password2', placeholder='Confirm Password', autofocus='on')
+								div(class='form-group')
+									label(class='col-lg-3 control-label')
+									div(class='col-lg-7')
+										button(class='btn btn-primary', id='verify-btn', onClick='javascript:dispatch(); return false;') Change Password
+			#footer
+		script(type='text/javascript', src='/js/jquery.js')
+		script(type='text/javascript', src='/js/bootstrap.min.js')
+		script(type='text/javascript', src='/js/dependencies.js')
+		script(type='text/javascript', src='/js/passreset.js')
+		script(type='text/javascript').
+			$(function() { display_navbar(); load_footer(); });
