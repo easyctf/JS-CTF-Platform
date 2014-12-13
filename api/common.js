@@ -18,6 +18,15 @@ exports.TEAMNAME_MAX_CHARS = 75;
 exports.HASH_LENGTH = 18;
 exports.ASCII = /^[\x20-\x7E]+$/;
 
+// for forgot password
+exports.FROM_EMAIL = "admin@yourctf.com";
+exports.FROM_NAME = "Your CTF";
+exports.DOMAIN = "yourctf.com";
+
+// !! IMPORTANT !!
+// Don't forget to add SENDGRID_USERNAME and SENDGRID_PASSWORD to your
+// environmental variables or to a .env file in the root dir of this 
+
 // *********
 //   DATES
 // *********

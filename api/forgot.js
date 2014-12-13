@@ -1,17 +1,7 @@
 var common = require("./common");
 var moment = require("moment");
 require("dotenv").load();
-
-// THIS INFO GOES INTO A .env FOLDER OR YOU CAN PROVIDE IT AS ENVIRONMENTAL VARIABLES ON YOUR HOST
 var sendgrid = require("sendgrid")(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-
-// *************
-//   CONSTANTS
-// *************
-// change this stuff
-var FROM_EMAIL = "admin@yourctf.com";
-var FROM_NAME = "Your CTF";
-var DOMAIN = "yourctf.com";
 
 exports.send_reset_email = function(req, res) {
 	var email = req.param("email");
@@ -83,11 +73,11 @@ exports.send_reset_email = function(req, res) {
 
 				sendgrid.send({
 					to: email,
-					from: FROM_EMAIL,
-					fromname: FROM_NAME,
-					replyto: FROM_EMAIL,
+					from: common.FROM_EMAIL,
+					fromname: common.FROM_NAME,
+					replyto: common.FROM_EMAIL,
 					subject: "Password Reset Requested.",
-					html: '<p>Hey there</p><p>Someone (hopefully you) requested to change the password for the account with the email ' + req.param('email') + '. Obviously, we\'ll be asking for verification of identity, so if you did in fact request this, follow this link: http://' + DOMAIN + '/forgot/' + code + "</p><p>" + FROM_NAME + "</p>"
+					html: '<p>Hey there</p><p>Someone (hopefully you) requested to change the password for the account with the email ' + req.param('email') + '. Obviously, we\'ll be asking for verification of identity, so if you did in fact request this, follow this link: http://' + common.DOMAIN + '/forgot/' + code + "</p><p>" + common.FROM_NAME + "</p>"
 				}, function(err4, json) {
 					if (err4) {
 						console.dir(err4);
