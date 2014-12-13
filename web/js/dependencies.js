@@ -93,58 +93,6 @@ function display_navbar () {
 			build_navbar(1);
 		}
 	});
-
-	/*
-	$.ajax({
-		url: "/api/auth/authorized",
-		method: "GET",
-		dataType: "json"
-	}).done(function(data) {
-		var admin = data.success === 1;
-		var full_navbar = during || admin;
-		if (typeof(Storage) != "undefined") {
-			if (sessionStorage.signInStatus == "loggedIn") {
-				build_navbar(full_navbar ? 0 : 3);
-			} else if (sessionStorage.signInStatus == "notLoggedIn") {
-				build_navbar(1);
-			} else if (sessionStorage.signInStatus == "apiFail") {
-				// gg
-			} else {
-				build_navbar(1);
-			}
-			$.ajax({
-				type: "GET",
-				url: "/api/auth/loggedin",
-				cache: false,
-			}).done(function(data2) {
-				if (data2['success'] == 1 && sessionStorage.signInStatus != "loggedIn") {
-					sessionStorage.signInStatus = "loggedIn";
-					build_navbar(full_navbar ? 0 : 3);
-				} else if (data2['success'] == 0 && sessionStorage.signInStatus != "notLoggedIn") {
-					sessionStorage.signInStatus = "notLoggedIn";
-					build_navbar(1);
-				}
-			}).fail(function() {
-				if (sessionStorage.signInStatus != "apiFail") {
-					sessionStorage.signInStatus = "apiFail";
-					// gg
-					show_site_down_error();
-				}
-			});
-			build_navbar(2);
-		} else {
-			$.ajax({
-				type: "GET",
-				url: "/api/auth/loggedin",
-				cache: false,
-			}).done(function(data2) {
-				build_navbar(data2['success'] == 1 ? (full_navbar ? 0 : 3) : 1);
-			}).fail(function() {
-				build_navbar(1);
-			});
-		}
-	});
-	*/
 }
 
 function load_footer() {
