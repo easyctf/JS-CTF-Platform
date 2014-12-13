@@ -10,7 +10,8 @@ var pages = [
 	"register",
 	"about",
 	"updates",
-	"scoreboard"
+	"scoreboard",
+	"forgot"
 ];
 
 var auth_pages = [

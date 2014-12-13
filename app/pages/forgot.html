@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+		<title>Forgot Password - CTF Platform</title>
+
+		<link rel="stylesheet" href="css/main.css" media="screen" />
+		<link rel="icon" href="images/logo.ico" media="screen" />
+	</head>
+
+	<body>
+		<nav role="navigation" class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-content">
+						<span class="sr-only">Toggle Navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+					</button><a href="/" class="navbar-brand">CTF-Platform</a>
+				</div>
+				<div id="navbar-content" class="collapse navbar-collapse">
+				    <ul class="nav navbar-nav" id="nav-left">
+				    </ul>
+				    <ul class="nav navbar-nav navbar-right" id="nav-right">
+				    </ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="container">
+				<div class="page-header">
+					<h1>Forgot Password</h1>
+				</div>
+			</div>
+
+			<div class="container">
+				<div id="forgot_msg"></div>
+				<div class="well col-lg-7">
+					<div>
+						<form action="javascript:dispatch();" class="form-horizontal">
+							<fieldset>
+								<legend>Enter the email you used to sign up.</legend>
+								<div class="form-group">
+									<label for="forgot-email" class="col-lg-3 control-label">Email</label>
+									<div class="col-lg-8">
+										<input type="email" name="forgot-email" id="forgot-email" placeholder="Email" autofocus="on" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-3 control-label"></label>
+									<div class="col-lg-7">
+										<button id="forgot-btn" onClick="javascript:dispatch(); return false;" class="btn btn-primary">Send Password Reset Email</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div id="footer"></div>
+		</div>
+
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/dependencies.js"></script>
+		<script type="text/javascript" src="js/forgot.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				display_navbar();
+				load_footer();
+			});
+		</script>
+	</body>
+</html>

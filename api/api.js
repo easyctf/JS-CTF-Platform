@@ -1,5 +1,6 @@
 var account = require("./account");
 var auth = require("./auth");
+var forgot = require("./forgot");
 var scoreboard = require("./scoreboard");
 
 module.exports = function(app) {
@@ -38,5 +39,12 @@ module.exports = function(app) {
 	});
 	app.get("/api/scoreboard/graph", function(req, res) {
 		scoreboard.get_graph(req, res);
+	});
+
+	// *******************
+	//   FORGOT PASSWORD
+	// *******************
+	app.post("/api/forgot", function(req, res) {
+		forgot.send_reset_email(req, res);
 	});
 };
