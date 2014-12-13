@@ -7,6 +7,7 @@
 			cache: false,
 			async: true
 		}).done(function(board) {
+			console.log(board);
 			$("#public_scoreboard_container").html(board);
 		});
 	};

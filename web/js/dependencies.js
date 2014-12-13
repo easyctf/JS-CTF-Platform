@@ -73,15 +73,17 @@ function display_navbar () {
 	$.ajax({
 		url: "/api/auth/loggedin",
 		method: "GET",
-		dataType: "json"
+		dataType: "json",
+		cache: false
 	}).done(function(data) {
-		console.dir(data);
+		// console.dir(data);
 		build_navbar(2);
 		if (data.success === 1) {
 			$.ajax({
 				url: "/api/auth/authorized",
 				method: "GET",
-				dataType: "json"
+				dataType: "json",
+				cache: false
 			}).done(function(data2) {
 				if (data2.success === 1) {
 					build_navbar(0);
@@ -102,5 +104,18 @@ function load_footer() {
 		url: "/dependencies/footer.html",
 	}).done(function(data) {
 		$("#footer").html(data);
+	});
+}
+
+function redirect_if_not_logged_in() {
+    $.ajax({
+        type: "GET",
+        url: "/api/auth/loggedin",
+        cache: false
+    }).done(function (data) {
+		if (data['success'] == 0)
+			window.location.href = '/login';
+	}).fail(function () {
+		window.location.href = '/';
 	});
 }

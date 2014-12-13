@@ -35,18 +35,18 @@
 
 				<div id="update_msg"></div>
 
-				<div class="well col-lg-7">
+				<div class="well col-lg-8">
 					<form action="javascript:updateInfo()" class="form-horizontal">
 						<fieldset>
 							<legend>Basic Account Info</legend>
 							<div class="form-group">
-								<label for="account-name" class="col-lg-3 control-label">Team Name</label>
+								<label for="account-name" class="col-lg-4 control-label">Team Name</label>
 								<div class="col-lg-8">
 									<input id="account-name" type="text" name="account-name" placeholder="Team Name" class="form-control">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-3 control-label">Email
+								<label class="col-lg-4 control-label">Email
 									<br /><small>Sorry, can't change this.</small>
 								</label>
 								<div class="col-lg-8">
@@ -54,13 +54,13 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="account-school" class="col-lg-3 control-label">School / Affiliation</label>
+								<label for="account-school" class="col-lg-4 control-label">School / Affiliation</label>
 								<div class="col-lg-8">
 									<input id="account-school" type="text" name="account-school" placeholder="School / Affiliation" class="form-control">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="account-password" class="col-lg-3 control-label">New Password
+								<label for="account-password" class="col-lg-4 control-label">New Password
 									<br /><small>Leave blank to leave unchanged.</small>
 								</label>
 								<div class="col-lg-8">
@@ -71,13 +71,13 @@
 						<fieldset>
 							<legend>Type your Password to Confirm</legend>
 							<div class="form-group">
-								<label for="account-confirm" class="col-lg-3 control-label">Confirm Changes</label>
+								<label for="account-confirm" class="col-lg-4 control-label">Confirm Changes</label>
 								<div class="col-lg-8">
 									<input id="account-confirm" type="password" name="account-confirm" placeholder="Confirm changes" class="form-control">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="account-submit" class="col-lg-3 control-label"></label>
+								<label for="account-submit" class="col-lg-4 control-label"></label>
 								<div class="col-lg-8">
 									<input id="account-submit" type="submit" name="account-submit" value="Update Account" class="btn btn-primary">
 								</div>
@@ -96,6 +96,8 @@
 		<script type="text/javascript">
 			$(function() {
 				display_navbar();
+				redirect_if_not_logged_in();
+				load_account_info();
 				load_footer();
 			});
 		</script>

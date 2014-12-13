@@ -46,7 +46,7 @@ module.exports = function(app) {
 						res.redirect(301, "/login");
 						return;
 					} else {
-						if (moment().isBefore(common.startDate)) {
+						if (!(moment().isAfter(common.startDate) || req.session.group == 3)) {
 							console.log("[app/router.js] competition hasn't started yet!");
 							res.redirect(301, "/account");
 							return;
