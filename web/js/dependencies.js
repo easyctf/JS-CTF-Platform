@@ -69,6 +69,32 @@ function build_navbar (set) {
 function display_navbar () {
 	var now = new Date();
 	var during = startDate < now && endDate > now;
+
+	$.ajax({
+		url: "/api/auth/loggedin",
+		method: "GET",
+		dataType: "json"
+	}).done(function(data) {
+		console.dir(data);
+		build_navbar(2);
+		if (data.success === 1) {
+			$.ajax({
+				url: "/api/auth/authorized",
+				method: "GET",
+				dataType: "json"
+			}).done(function(data2) {
+				if (data2.success === 1) {
+					build_navbar(0);
+				} else {
+					build_navbar(3);
+				}
+			});
+		} else {
+			build_navbar(1);
+		}
+	});
+
+	/*
 	$.ajax({
 		url: "/api/auth/authorized",
 		method: "GET",
@@ -118,6 +144,7 @@ function display_navbar () {
 			});
 		}
 	});
+	*/
 }
 
 function load_footer() {
