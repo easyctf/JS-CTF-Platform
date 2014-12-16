@@ -4,8 +4,8 @@ var endDate = Date.parse('21 Feb 2015 21:00:00 GMT-0500');
 var tabsLI = [
 	[ "problems", "Problems" ],
 	/* [ "exec", "Python" ], */ /* UNCOMMENT THIS IF YOU WANT THE PYTHON EDITOR */
-	[ "irc", "Chat" ],
-	[ "shell", "Shell" ],
+	[ "chat", "Chat" ],
+	/* [ "shell", "Shell" ], */ /* UNCOMMENT THIS IF YOU WANT A SHELL */
 	[ "account", "Account" ],
 	[ "logout", "Logout" ],
 ];

@@ -88,6 +88,10 @@ exports.logout = function(req, res) {
 	}
 };
 
+exports.checkAuth = function(req, res) {
+	checkAuth(req, res);
+};
+
 var checkAuth = function(req, res) {
 	if ((moment().isAfter(common.startDate) && moment().isBefore(common.endDate)) || (req.session.group && req.session.group == 3)) {
 		res.send({

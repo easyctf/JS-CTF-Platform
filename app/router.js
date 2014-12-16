@@ -11,7 +11,8 @@ var pages = [
 	"about",
 	"updates",
 	"scoreboard",
-	"forgot"
+	"forgot",
+	"chat"
 ];
 
 var auth_pages = [

@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-		<title>Problems - CTF Platform</title>
+		<title>Chat - CTF Platform</title>
 
 		<link rel="stylesheet" href="css/main.css" media="screen" />
 		<link rel="icon" href="images/logo.ico" media="screen" />
@@ -30,22 +30,22 @@
 		<div class="container">
 			<div class="container">
 				<div class="page-header">
-					<h1>Problems</h1>
+					<h1>Chat</h1>
 				</div>
-				<div id="problems_holder"></div>
-				<div id="footer"></div>
+				<div class="jumbotron">
+					<center><iframe src="http://www.example.com" style="width:840px;height:480px;"></iframe></center>
+				</div>
 			</div>
+
+			<div id="footer"></div>
 		</div>
 
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/dependencies.js"></script>
-		<script type="text/javascript" src="js/problems.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				display_navbar();
-				redirect_if_not_logged_in();
-				load_problems();
 				load_footer();
 			});
 		</script>
