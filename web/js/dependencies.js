@@ -61,7 +61,6 @@ function build_navbar (set) {
 			$("#nav-right")[0].innerHTML = ohtml;
 			break;
 		default:
-			// fuck you
 			break;
 	}
 }

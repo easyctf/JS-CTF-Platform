@@ -59,6 +59,17 @@ module.exports = function(app) {
 			}
 		});
 	});
+	app.post("/api/problems/submit", function(req, res) {
+		authorized(req, res, function(result) {
+			if (result.success == 1) {
+				problem.submit_problem(req, function(result) {
+					res.send(result);
+				});
+			} else {
+				res.send({ success: 0, message: "You can't view this page!" });
+			}
+		});
+	});
 
 	// *******************
 	//   FORGOT PASSWORD

@@ -1,4 +1,33 @@
 (function() {
+	window.handle_submit = function(prob_id) {
+		$.ajax({
+			type: "POST",
+			cache: false,
+			url: "/api/problems/submit",
+			dataType: "json",
+			data: {
+				pid: prob_id,
+				key: $("#"+prob_id).val()
+			}
+		}).done(function(data) {
+			console.dir(data);
+			var prob_msg = $("#msg_" + prob_id);
+			var alert_class = "";
+			if (data.status == 0) {
+				alert_class = "danger";
+			} else if (data.status == 1) {
+				alert_class = "success";
+			}
+			prob_msg.hide().html("<div class='alert alert-"+alert_class+"'>"+data.message+"</div>").slideDown();
+			setTimeout(function() {
+				prob_msg.slideUp("normal", function() {
+					prob_msg.html("").show();
+					if (data.status == 1) window.location.reload(true);
+				});
+			}, 2000);
+		});
+	};
+
 	window.load_problems = function() {
 		$.ajax({
 			type: "GET",

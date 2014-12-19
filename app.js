@@ -8,6 +8,7 @@ var express = require("express");
 var http = require("http");
 var api = require("./api/api");
 var router = require("./app/router");
+require("dotenv").load();
 
 var app = express();
 
@@ -21,7 +22,7 @@ app.configure(function() {
 	app.use(express.cookieParser());
 	app.use(express.methodOverride());
 	app.use(express.session({
-		secret: "replace-this-secret"
+		secret: process.env.APP_SECRET
 	}));
 
 	app.use(express.static(__dirname + "/web"));
